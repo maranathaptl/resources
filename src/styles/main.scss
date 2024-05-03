@@ -1,0 +1,143 @@
+@use '@matteusan/himig' with ($expressive-inks: true);
+@use '@matteusan/himig/ms-button';
+@use '@matteusan/himig/ms-card';
+@use '@matteusan/himig/ms-utils';
+
+@include himig.init(
+  $accent: (
+    100: #ffcaca,
+    200: #f57b7b,
+    300: #f14f4f,
+    400: #e11212,
+    600: #a10808,
+    800: #5a0404,
+  ),
+  $surface: 'ms-white',
+  $background: 'ms-white.200'
+);
+
+.app {
+  width: 100%;
+  min-width: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+* {
+  min-width: 0;
+}
+
+@include ms-button.render();
+@include ms-card.render();
+
+@include ms-utils.layout();
+@include ms-utils.struct();
+@include ms-utils.typography($include: ('preset'));
+
+.mptl-hero {
+  width: 100%;
+  max-height: 55vh;
+  overflow: clip;
+  border-radius: himig.primitive-token-get('radius.2xl');
+
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.mptl-navbar {
+  .mptl-navbar__item {
+    &.is-active {
+      color: himig.token-get('accent-600');
+      font-weight: 700;
+    }
+  }
+}
+
+.mptl-tile {
+  width: 100%;
+  height: 100%;
+  border-radius: himig.primitive-token-get('radius.lg');
+  overflow: clip;
+  position: relative;
+  transition: all var(--ms-transition-time) ease-in-out;
+
+  &:hover {
+    transform: translateY(-10px);
+    @include himig.struct-shadow('tile', 'md');
+
+    @include himig.breakpoint-create('large') {
+      @include himig.key-bind('tile-opacity', 1);
+    }
+  }
+
+  &.is-locked {
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 16/9;
+    z-index: 0;
+  }
+
+  .mptl-tile__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: rgba(himig.token-get-raw('accent-600'), 70%);
+    color: white;
+    opacity: himig.key-create('tile-opacity', 1);
+    z-index: 1;
+    transition: all var(--ms-transition-time) ease-in-out;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+    align-items: center;
+    gap: himig.primitive-token-get('gap.sm');
+
+    p {
+      display: none;
+    }
+
+    .mptl-tile__icon {
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-content: center;
+
+      > * {
+        width: 24px;
+        height: 24px;
+        display: grid;
+        place-content: center;
+      }
+    }
+
+    @include himig.breakpoint-create('large') {
+      inset: 0;
+      padding: 2rem;
+      opacity: himig.key-create('tile-opacity', 0);
+
+      p {
+        display: block;
+      }
+    }
+  }
+}
+
+img, svg, video {
+  max-width: 100%;
+  display: block;
+  font-style: italic;
+}
