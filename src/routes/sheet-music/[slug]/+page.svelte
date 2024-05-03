@@ -19,7 +19,7 @@
 
 <h1 class="title">{ data.pieceName }</h1>
 {#if data.files.length !== 0}
-  <section class="grid cols-1 @medium:cols-2 @large:cols-3 gap-sm @medium:gap-md">
+  <section class="grid-container">
     {#each data.files as file}
       <a href={`${file.url}`} target="_blank">
         <div class="ms-card is-hoverable">

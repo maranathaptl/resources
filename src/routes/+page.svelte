@@ -14,7 +14,7 @@
   <meta name="description" content="Maranatha Resources"/>
 </svelte:head>
 
-<section class="grid cols-1 @large:cols-3 gap-md">
+<section class="grid-container">
   <MPTLTile
     title="Chords"
     media={Chords}

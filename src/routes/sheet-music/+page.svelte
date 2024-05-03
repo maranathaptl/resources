@@ -17,7 +17,7 @@
 </section>
 
 <h1 class="title">Sheet Music</h1>
-<section class="grid cols-1 @medium:cols-2 @large:cols-3 gap-sm @medium:gap-md">
+<section class="grid-container">
   {#each data.sheets as sheet}
     <a href={`/sheet-music/${sheet.slug.toString()}`}>
       <div class="ms-card is-hoverable">

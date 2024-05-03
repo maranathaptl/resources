@@ -200,3 +200,17 @@ img, svg, video {
     @include himig.break($i);
   }
 }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(var(--repeat, 1), 1fr);
+  gap: himig.primitive-token-get('gap.md');
+
+  @include himig.breakpoint-create('medium') {
+    --repeat: 2;
+  }
+
+  @include himig.breakpoint-create('large') {
+    --repeat: 3;
+  }
+}
