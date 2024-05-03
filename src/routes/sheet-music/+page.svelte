@@ -1,14 +1,6 @@
 <script lang="ts">
-  import { supabase } from "$lib/supabase";
-  import { db } from '$lib/db';
-  import { sheet_music } from "$lib/schema";
-
-  function getSheetMusic(file: string) {
-    return supabase.storage.from('sheet-music').getPublicUrl(file);
-  }
-
-  // const data = await db.select().from(sheet_music);
-  // console.log(data);
+  export let data;
+  console.table(data.sheets);
 </script>
 
 <svelte:head>
@@ -16,14 +8,26 @@
   <meta name="description" content="Sheet Music - Maranatha Resources"/>
 </svelte:head>
 
+<section class="mptl-pathbar">
+  <nav aria-label="pathbar">
+    <ul class="mptl-pathbar__wrapper">
+      <li><a href="/">Home</a></li>
+      <li class="is-active">Sheet Music</li>
+    </ul>
+  </nav>
+</section>
+
 <h1 class="title">Sheet Music</h1>
-<section class="flex flow-column gap-sm">
-  <div class="ms-card">
-    <header class="ms-card__header">
-      <div class="ms-card__mast">
-        <h2 class="ms-card__title">CARD TITLE</h2>
-        <p class="ms-card__subtitle">Card Subtitle.</p>
+<section class="grid cols-1 @medium:cols-2 @large:cols-3 gap-sm @medium:gap-md">
+  {#each data.sheets as sheet}
+    <a href={`/sheet-music/${sheet.slug.toString()}`}>
+      <div class="ms-card is-hoverable">
+        <header class="ms-card__header">
+          <div class="ms-card__mast">
+            <p class="subtitle truncate-1">{sheet.piece}</p>
+          </div>
+        </header>
       </div>
-    </header>
-  </div>
+    </a>
+  {/each}
 </section>

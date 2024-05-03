@@ -1,6 +1,4 @@
 <script lang="ts">
-  import Chords from "$lib/images/chords.png";
-
   export let title: string;
   export let media: string|any;
   export let mediaAlt: string;
