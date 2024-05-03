@@ -1,6 +1,5 @@
 <script lang="ts">
   export let data;
-  console.table(data.sheets);
 </script>
 
 <svelte:head>
