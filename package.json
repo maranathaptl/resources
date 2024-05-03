@@ -11,7 +11,6 @@
 	"devDependencies": {
 		"@erbelion/vite-plugin-sveltekit-purgecss": "^0.1.0",
 		"@fontsource/fira-mono": "^4.5.10",
-		"@img/sharp-linux-x64": "^0.33.3",
 		"@matteusan/himig": "^1.5.1",
 		"@neoconfetti/svelte": "^1.0.0",
 		"@sveltejs/adapter-auto": "^3.0.0",
@@ -28,6 +27,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@supabase/supabase-js": "^2.42.7"
+		"@supabase/supabase-js": "^2.42.7",
+		"sharp": "^0.33.3"
 	}
 }

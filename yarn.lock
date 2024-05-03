@@ -472,7 +472,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@img/sharp-linux-x64@npm:0.33.3, @img/sharp-linux-x64@npm:^0.33.3":
+"@img/sharp-linux-x64@npm:0.33.3":
   version: 0.33.3
   resolution: "@img/sharp-linux-x64@npm:0.33.3"
   dependencies:
@@ -480,7 +480,6 @@ __metadata:
   dependenciesMeta:
     "@img/sharp-libvips-linux-x64":
       optional: true
-  checksum: e796b9a7ed0077babf04a210e3be27a67527ae443da39b6447fb938d1c587c0fee466f15091d61f21141481dab71e3fd45ae174af1542619f071dffc25fc1e2a
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
@@ -2581,7 +2580,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sharp@npm:^0.33.1":
+"sharp@npm:^0.33.1, sharp@npm:^0.33.3":
   version: 0.33.3
   resolution: "sharp@npm:0.33.3"
   dependencies:
@@ -2851,7 +2850,6 @@ __metadata:
   dependencies:
     "@erbelion/vite-plugin-sveltekit-purgecss": ^0.1.0
     "@fontsource/fira-mono": ^4.5.10
-    "@img/sharp-linux-x64": ^0.33.3
     "@matteusan/himig": ^1.5.1
     "@neoconfetti/svelte": ^1.0.0
     "@supabase/supabase-js": ^2.42.7
@@ -2860,6 +2858,7 @@ __metadata:
     "@sveltejs/kit": ^2.0.0
     "@sveltejs/vite-plugin-svelte": ^3.0.0
     sass: ^1.75.0
+    sharp: ^0.33.3
     svelte: ^4.2.15
     svelte-check: ^3.6.0
     svelte-preprocess: ^5.1.4
