@@ -23,7 +23,7 @@
       <div class="ms-card is-hoverable">
         <header class="ms-card__header">
           <div class="ms-card__mast">
-            <p class="subtitle truncate-1">{sheet.piece}</p>
+            <p class="weight-bold truncate-1">{sheet.piece}</p>
           </div>
         </header>
       </div>
