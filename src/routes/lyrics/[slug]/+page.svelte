@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Lyrics from '$lib/images/lyrics.png';
+  import Lyrics from '$lib/images/lyrics.png.webp';
   import { page } from '$app/stores';
 
   export let data: any = [];

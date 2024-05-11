@@ -1,5 +1,5 @@
 <script>
-  import Guidelines from '$lib/images/guidelines.png';
+  import Guidelines from '$lib/images/guidelines.png.webp';
 </script>
 
 <svelte:head>

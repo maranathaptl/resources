@@ -1,5 +1,5 @@
 <script lang="ts">
-  import SheetMusic from '$lib/images/sheet-music.png';
+  import SheetMusic from '$lib/images/sheet-music.png.webp';
 
   export let data;
 </script>

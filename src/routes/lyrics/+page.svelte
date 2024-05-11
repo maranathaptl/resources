@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Lyrics from '$lib/images/lyrics.png';
+  import Lyrics from '$lib/images/lyrics.png.webp';
   import MPTLFormField from '$components/MPTLFormField.svelte';
   import { page } from '$app/stores';
   import MPTLButton from '$components/MPTLButton.svelte';
