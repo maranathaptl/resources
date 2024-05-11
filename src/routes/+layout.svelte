@@ -7,7 +7,7 @@
 
 <div class="app">
   <section class="flex flow-column gap-xl wrap-none">
-    <header class="pt-lg px-lg @large:pt-2xl">
+    <header class="pt-xl px-xl @large:pt-2xl">
       <section class="w-full max-w-xl mx-auto flex flow-column @medium:flow-row wrap-none gap-md jc-space-between ai-center">
         <a href="/" class="inline-block flex ai-center gap-sm">
           <!--<img src={Logo} alt="Maranatha Resources" style="width: 32px; height: 32px;" />-->

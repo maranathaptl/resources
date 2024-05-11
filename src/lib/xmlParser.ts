@@ -28,11 +28,15 @@ export async function parseXml(file: string) {
     .then(res => res.text())
     .then(text => (new DOMParser()).parseFromString(text, "text/xml"))
     .then(d => {
-      let title = d.getElementsByTagName('title');
+      const title = d.getElementsByTagName('title');
+      let author = d.getElementsByTagName('author');
+      let theme = d.getElementsByTagName('theme');
       let lyrics = d.getElementsByTagName('verse');
       let items: Element[] = Array.prototype.slice.call(lyrics);
       header.push({
         title: title[0]?.textContent,
+        author: author[0]?.textContent,
+        theme: theme[0]?.textContent
       });
 
       items.forEach(async (item) => {

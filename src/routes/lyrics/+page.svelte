@@ -30,7 +30,7 @@
 <form class="flex flow-row wrap-none gap-sm ai-center" on:submit={() => handleSearch()}>
   <MPTLFormField label="Search lyrics" bind:value name="q" />
   <MPTLButton nativeType="submit" type="outlined icon-only">
-    <span slot="icon">
+    <span class="grid pi-center" slot="icon">
       <svg style="width: 24px; height: 24px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
       </svg>
@@ -43,7 +43,7 @@
       <div class="ms-card is-hoverable">
         <header class="ms-card__header">
           <div class="ms-card__mast">
-            <p class="weight-bold truncate-1">{file.name.replaceAll(/\(([^)]+)\)|.xml/g, '').replaceAll('_', ' ').toUpperCase()}</p>
+            <p class="weight-bold truncate-1">{file.name.replaceAll(/.xml/g, '').replaceAll('_', ' ').toUpperCase()}</p>
           </div>
         </header>
       </div>

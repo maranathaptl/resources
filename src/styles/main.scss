@@ -39,7 +39,12 @@ body > * {
 }
 
 main.content-wrap {
+  width: calc(100% - 50px);
   height: 100%;
+
+  @include himig.breakpoint-create('medium') {
+    width: calc(100% - 74px);
+  }
 }
 
 @include ms-button.render();
@@ -69,7 +74,7 @@ main.content-wrap {
 
 @include ms-utils.layout();
 @include ms-utils.struct();
-@include ms-utils.typography($include: ('preset', 'weight'));
+@include ms-utils.typography($include: ('preset', 'weight', 'alignment'));
 
 .mptl-hero {
   width: 100%;
@@ -175,7 +180,6 @@ main.content-wrap {
 .mptl-pathbar {
   @include himig.typography-apply('pathbar', (
     'size': 'small',
-    // 'weight': 'bold'
   ));
 
   .mptl-pathbar__wrapper {
@@ -187,6 +191,8 @@ main.content-wrap {
     list-style: none;
 
     li {
+      @include himig.break(1);
+
       &:last-child {
         color: himig.token-get('accent-600');
         font-weight: 700;
@@ -233,16 +239,40 @@ img, svg, video {
   background: var(--ms-theme-accent-alpha-400);
 }
 
-lines {
-  tag {
-    font-weight: bold;
+.mptl-lyrics-section {
+}
 
-    + br {
-      --visibility: block;
+.mptl-lyric-chunk {
+  position: relative;
+
+  &:hover {
+    &::before {
+      position: absolute;
+      content: '🔗';
+      top: 0;
+      left: 0;
+
+      @include himig.breakpoint-create('large') {
+        left: calc(100% - 62%);
+      }
     }
   }
 
-  br:first-of-type {
-    display: var(--visibility, none);
+  lines {
+    tag[name='sb'] {
+      font-weight: bold;
+
+      + br {
+        --visibility: block;
+      }
+    }
+
+    br {
+      display: var(--visibility, block);
+
+      &:first-of-type {
+        //--visibility: none;
+      }
+    }
   }
 }

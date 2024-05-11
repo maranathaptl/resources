@@ -37,15 +37,16 @@
   </nav>
 </section>
 
-<section>
-  <div style="margin: 0 auto; max-width: 540px;">
-    <h2 class="title mb-lg">{ parseTitle(data.header[0].title) }</h2>
+<section class="mptl-lyrics-section mt-xl">
+  <div style="margin: 0 auto;">
+    <h2 class="title mb-lg @large:align-center">{ parseTitle(data.header[0].title) }</h2>
     {#each data.lyrics as lyric}
-      <div class={`mb-md${ id === getIdFromHeader(lyric.header) ? ' highlighted' : '' }`}>
-        <p id={getIdFromHeader(lyric.header)}>
-          <button style="all: unset; cursor: pointer;" on:click={() => copyUrlWithId(getIdFromHeader(lyric.header))}>
-            {@html lyric.content}
-          </button>
+      <div
+        class={`mptl-lyric-chunk mb-md${ id === getIdFromHeader(lyric.header) ? ' highlighted' : '' }`}
+        style="cursor: pointer;" on:click={() => copyUrlWithId(getIdFromHeader(lyric.header))}
+      >
+        <p class="@large:align-center" id={getIdFromHeader(lyric.header)}>
+          {@html lyric.content}
         </p>
       </div>
     {/each}
