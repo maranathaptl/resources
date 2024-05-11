@@ -1,5 +1,5 @@
 {
-    "destDir": "./public/images/",
-    "originalDir": "./public/images/",
+    "destDir": "./src/lib/images/",
+    "originalDir": "./src/lib/images/",
     "targetExt": ".+(jpg|png|gif)"
 }
