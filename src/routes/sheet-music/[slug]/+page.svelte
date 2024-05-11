@@ -8,6 +8,7 @@
   <title>{ data.pieceName } Sheet Music - Maranatha Resources</title>
   <meta name="description" content={`${ data.pieceName } Sheet Music - Maranatha Resources`}/>
   <meta property="og:image" content={SheetMusic} />
+  <meta name="twitter:image" content={SheetMusic} />
 </svelte:head>
 
 <section class="mptl-pathbar">

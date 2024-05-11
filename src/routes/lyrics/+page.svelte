@@ -18,6 +18,7 @@
   <title>Lyrics - Maranatha Resources</title>
   <meta name="description" content="Lyrics - Maranatha Resources"/>
   <meta property="og:image" content={Lyrics} />
+  <meta name="twitter:image" content={Lyrics} />
 </svelte:head>
 
 <section class="mptl-pathbar">

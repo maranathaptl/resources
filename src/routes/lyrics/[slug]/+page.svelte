@@ -26,6 +26,7 @@
   <title>{ parseTitle(data.header[0].title) } Lyrics - Maranatha Resources</title>
   <meta name="description" content="{ parseTitle(data.header[0].title) } Lyrics - Maranatha Resources"/>
   <meta property="og:image" content={Lyrics} />
+  <meta name="twitter:image" content={Lyrics} />
 </svelte:head>
 
 <section class="mptl-pathbar">
