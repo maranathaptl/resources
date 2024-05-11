@@ -1,19 +1,15 @@
 <script lang="ts">
-  import { createSearchStore, searchHandler } from '$lib/stores/search';
-  import { onDestroy } from 'svelte';
   import MPTLFormField from '$components/MPTLFormField.svelte';
+  import { page } from '$app/stores';
+  import MPTLButton from '$components/MPTLButton.svelte';
 
   export let data;
 
-  const searchLyrics = data.files.map((file) => ({
-    ...file,
-    searchTerms: `${file.name}`
-  }));
+  let value = $page.url.searchParams.get('q') || '';
 
-  const searchStore = createSearchStore(searchLyrics);
-  const unsubscribe = searchStore.subscribe((model) => searchHandler(model));
-
-  onDestroy(() => unsubscribe());
+  function handleSearch() {
+    window.location.href = `/lyrics?q=${value}`;
+  }
 </script>
 
 <svelte:head>
@@ -31,9 +27,12 @@
 </section>
 
 <h1 class="title">Lyrics</h1>
-<MPTLFormField label="Search lyrics" bind:value={$searchStore.search} />
+<form class="flex flow-row wrap-none gap-sm" on:submit={() => handleSearch()}>
+  <MPTLFormField label="Search lyrics" bind:value name="q" />
+  <MPTLButton nativeType="submit" type="outlined small">Search</MPTLButton>
+</form>
 <section class="grid-container">
-  {#each $searchStore.filtered.slice(0, 48) as file}
+  {#each data.files as file}
     <a href={`/lyrics/${file.name.replace('.xml', '')}`}>
       <div class="ms-card is-hoverable">
         <header class="ms-card__header">

@@ -10,6 +10,7 @@
 	},
 	"devDependencies": {
 		"@matteusan/himig": "^1.5.1",
+		"@nonsugarless/webp-converter": "^1.0.4",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",

@@ -3,20 +3,24 @@
   export let value: any = '';
   export let helper: string = '';
   export let type: string = 'text';
-  export let placeholder: string = helper || label; // For accessibility
+  export let placeholder: string = helper || label;
+  export let name: string = '';
 
-  const handleInput = (e: any) => {
-    value = type.match(/^(number|range)$/)
-      ? +e.target.value
-      : e.target.value;
-  };
+  const onInput = (e: any) => (value = e.target.value);
 </script>
 
 <label class="ms-form-field">
   {#if label}
     <span class="ms-form-field__label">{ label }</span>
   {/if}
-  <input {type} on:input={handleInput} class="ms-form-field__input" placeholder={placeholder} name="text-field" {value} />
+  <input
+    {type}
+    class="ms-form-field__input"
+    {placeholder}
+    {name}
+    {value}
+    on:input={onInput}
+  />
   {#if helper}
     <span class="ms-form-field__helper">{ helper }</span>
   {/if}

@@ -9,7 +9,7 @@
 </script>
 
 {#if !link}
-  <button class={`ms-button${ handleVariants(type) }`} type={nativeType} disabled={isDisabled}>
+  <button class={`ms-button${ handleVariants(type) }`} type={nativeType} disabled={isDisabled} on:click>
     {#if $$slots.icon}
       <i class="ms-button__icon"><slot name="icon" /></i>
     {/if}

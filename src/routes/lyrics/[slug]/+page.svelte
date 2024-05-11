@@ -22,6 +22,21 @@
 
 </script>
 
+<svelte:head>
+  <title>{ parseTitle(data.header[0].title) } Lyrics - Maranatha Resources</title>
+  <meta name="description" content="{ parseTitle(data.header[0].title) } Lyrics - Maranatha Resources"/>
+</svelte:head>
+
+<section class="mptl-pathbar">
+  <nav aria-label="pathbar">
+    <ul class="mptl-pathbar__wrapper">
+      <li><a href="/">Home</a></li>
+      <li><a href="/lyrics">Lyrics</a></li>
+      <li class="is-active">{ parseTitle(data.header[0].title) }</li>
+    </ul>
+  </nav>
+</section>
+
 <section>
   <div style="margin: 0 auto; max-width: 540px;">
     <h2 class="title mb-lg">{ parseTitle(data.header[0].title) }</h2>
