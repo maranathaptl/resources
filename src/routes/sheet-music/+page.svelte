@@ -1,10 +1,14 @@
 <script lang="ts">
+  import SheetMusic from '$lib/images/sheet-music.png';
+
   export let data;
 </script>
 
 <svelte:head>
   <title>Sheet Music - Maranatha Resources</title>
   <meta name="description" content="Sheet Music - Maranatha Resources"/>
+  <meta property="og:image" content={SheetMusic} />
+
 </svelte:head>
 
 <section class="mptl-pathbar">

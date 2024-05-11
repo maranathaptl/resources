@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Lyrics from '$lib/images/lyrics.png';
   import { page } from '$app/stores';
 
   export let data: any = [];
@@ -19,12 +20,12 @@
   }
 
   const id = $page.url.href.split('#')[1] ? $page.url.href.split('#')[1] : '';
-
 </script>
 
 <svelte:head>
   <title>{ parseTitle(data.header[0].title) } Lyrics - Maranatha Resources</title>
   <meta name="description" content="{ parseTitle(data.header[0].title) } Lyrics - Maranatha Resources"/>
+  <meta property="og:image" content={Lyrics} />
 </svelte:head>
 
 <section class="mptl-pathbar">

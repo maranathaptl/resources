@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Lyrics from '$lib/images/lyrics.png';
   import MPTLFormField from '$components/MPTLFormField.svelte';
   import { page } from '$app/stores';
   import MPTLButton from '$components/MPTLButton.svelte';
@@ -10,11 +11,13 @@
   function handleSearch() {
     window.location.href = `/lyrics?q=${value}`;
   }
+
 </script>
 
 <svelte:head>
   <title>Lyrics - Maranatha Resources</title>
   <meta name="description" content="Lyrics - Maranatha Resources"/>
+  <meta property="og:image" content={Lyrics} />
 </svelte:head>
 
 <section class="mptl-pathbar">
