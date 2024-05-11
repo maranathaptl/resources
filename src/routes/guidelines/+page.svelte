@@ -1,0 +1,9 @@
+<script>
+  import Guidelines from '$lib/images/guidelines.png';
+</script>
+
+<svelte:head>
+  <title>Guidelines - Maranatha Resources</title>
+  <meta name="description" content="Guidelines - Maranatha Resources"/>
+  <meta property="og:image" content={Guidelines} />
+</svelte:head>
