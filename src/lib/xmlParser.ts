@@ -1,4 +1,3 @@
-import { keywords } from '$lib/constants/lyricsHeaderMatchList';
 import { DOMParser } from 'xmldom';
 import { toArray } from '$lib/helpers';
 
@@ -37,7 +36,6 @@ export async function parseXml(file: string) {
       });
 
       items.forEach(async (item) => {
-        console.log(toArray(item.childNodes));
         results.push({
           header: parseHeader(item.getAttribute('name')),
           content: filterContent(toArray(item.childNodes))
