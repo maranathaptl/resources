@@ -213,6 +213,9 @@ img, svg, video {
   max-width: 100%;
   display: block;
   font-style: italic;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @for $i from 1 through 3 {
