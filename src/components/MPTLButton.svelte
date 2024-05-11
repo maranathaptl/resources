@@ -11,7 +11,9 @@
 {#if !link}
   <button class={`ms-button${ handleVariants(type) }`} type={nativeType} disabled={isDisabled} on:click>
     {#if $$slots.icon}
-      <i class="ms-button__icon"><slot name="icon" /></i>
+      <i class="ms-button__icon">
+        <slot name="icon" />
+      </i>
     {/if}
     {#if $$slots.default}
       <span class="ms-button__label"><slot /></span>
@@ -20,7 +22,9 @@
 {:else}
   <a class={`ms-button${ handleVariants(type) }${ isDisabled ? ' is-disabled' : '' }`} href={link} target={handleLinkTarget(link)}>
     {#if $$slots.icon}
-      <i class="ms-button__icon"><slot name="icon" /></i>
+      <i class="ms-button__icon">
+        <slot name="icon" />
+      </i>
     {/if}
     {#if $$slots.default}
       <span class="ms-button__label"><slot /></span>

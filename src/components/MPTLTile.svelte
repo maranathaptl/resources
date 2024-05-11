@@ -1,15 +1,15 @@
 <script lang="ts">
-    import type { Optional } from "$lib/types";
+  import type { Optional } from "$lib/types";
 
   export let title: string;
   export let media: string|any;
   export let mediaAlt: string;
-  export let link: Optional<string>;
+  export let link: Optional<string> = undefined;
   export let isLocked: boolean = false;
 </script>
 
 {#if !link}
-  <div class={`mptl-tile${ isLocked ? ' is-locked' : '' }`}>
+  <div class={`mptl-tile${ isLocked ? ' is-locked' : '' }`} style={`--mptl-tile-background-image: url(${ media }.webp)`}>
     <div class="mptl-tile__overlay">
       {#if isLocked}
         <i class="mptl-tile__icon">
@@ -24,7 +24,7 @@
   </div>
 {:else}
   <a href={link}>
-    <div class={`mptl-tile${ isLocked ? ' is-locked' : '' }`}>
+    <div class={`mptl-tile${ isLocked ? ' is-locked' : '' }`} style={`--mptl-tile-background-image: url(${ media }.webp)`}>
       <div class="mptl-tile__overlay">
         {#if isLocked}
           <i class="mptl-tile__icon">
