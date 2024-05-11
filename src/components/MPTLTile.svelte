@@ -1,8 +1,10 @@
 <script lang="ts">
+    import type { Optional } from "$lib/types";
+
   export let title: string;
   export let media: string|any;
   export let mediaAlt: string;
-  export let link: string|undefined;
+  export let link: Optional<string>;
   export let isLocked: boolean = false;
 </script>
 

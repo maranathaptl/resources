@@ -1,0 +1,38 @@
+<script lang="ts">
+  import { page } from '$app/stores';
+
+  export let data: any = [];
+
+  function parseTitle(title: string): string {
+    return title.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase());
+  }
+
+  function getIdFromHeader(header: string): string {
+    return header.replace(/\s/g, '-').replace('.', '').toLowerCase();
+  }
+
+  function copyUrlWithId(id: string) {
+    const url = new URL($page.url.href);
+    url.hash = id;
+    navigator.clipboard.writeText(url.href);
+    alert('Url copied to clipboard!');
+  }
+
+  const id = $page.url.href.split('#')[1] ? $page.url.href.split('#')[1] : '';
+
+</script>
+
+<section>
+  <div style="margin: 0 auto; max-width: 540px;">
+    <h2 class="title mb-lg">{ parseTitle(data.header[0].title) }</h2>
+    {#each data.lyrics as lyric}
+      <div class={`mb-md${ id === getIdFromHeader(lyric.header) ? ' highlighted' : '' }`}>
+        <p id={getIdFromHeader(lyric.header)}>
+          <button style="all: unset; cursor: pointer;" on:click={() => copyUrlWithId(getIdFromHeader(lyric.header))}>
+            {@html lyric.content}
+          </button>
+        </p>
+      </div>
+    {/each}
+  </div>
+</section>

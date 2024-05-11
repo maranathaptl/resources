@@ -27,13 +27,9 @@
     </main>
   </section>
 
-  <footer class="flex jc-center ai-center pb-lg px-lg @large:pb-2xl">
+  <footer class="flex jc-center ai-center py-2xl">
     <small class="small align-center">
       Copyright &copy; { new Date().getFullYear() } Maranatha PTL Club of The Philippines
     </small>
   </footer>
 </div>
-
-<style>
-
-</style>

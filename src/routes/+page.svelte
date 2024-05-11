@@ -25,7 +25,7 @@
     title="Lyrics"
     media={Lyrics}
     mediaAlt="Lyrics hero"
-    isLocked
+    link="/lyrics"
   />
   <MPTLTile
     title="Recordings"

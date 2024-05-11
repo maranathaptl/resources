@@ -1,6 +1,7 @@
 @use '@matteusan/himig' with ($expressive-inks: true);
 @use '@matteusan/himig/ms-button';
 @use '@matteusan/himig/ms-card';
+@use '@matteusan/himig/ms-form-field';
 @use '@matteusan/himig/ms-utils';
 
 @include himig.init(
@@ -23,6 +24,14 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+body > * {
+  scroll-behavior: smooth;
+  scroll-padding-block-start: 155px;
 }
 
 * {
@@ -53,6 +62,7 @@ main.content-wrap {
     }
   }
 }
+@include ms-form-field.render();
 
 @include ms-utils.layout();
 @include ms-utils.struct();
@@ -212,5 +222,23 @@ img, svg, video {
 
   @include himig.breakpoint-create('large') {
     --repeat: 3;
+  }
+}
+
+.highlighted {
+  background: var(--ms-theme-accent-alpha-400);
+}
+
+lines {
+  tag {
+    font-weight: bold;
+
+    + br {
+      --visibility: block;
+    }
+  }
+
+  br:first-of-type {
+    display: var(--visibility, none);
   }
 }
