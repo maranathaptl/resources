@@ -8,7 +8,7 @@ export async function load({ url }) {
     search: url.searchParams.get('q') || ''
   });
 
-  const files = data?.map((file) => {
+  const files = data?.filter((file) => file.name !== '.emptyFolderPlaceholder').map((file) => {
     return {
       name: file.name,
     };
