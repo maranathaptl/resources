@@ -60,7 +60,7 @@
     {#if data.references.length <= 0}
       <p>No references to show.</p>
     {:else}
-      <ul class="mptl-lyrics-references">
+      <ul class="mptl-references">
         {#each data.references as reference}
           <li class="flex flow-row gap-sm ai-center">
             <a href={reference.url} class="ms-link" target="_blank">{ reference.title }</a>

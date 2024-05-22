@@ -1,12 +1,23 @@
 import { supabase } from '$lib/supabase';
 
 export async function load({ params }) {
-  const { data } = await supabase.storage.from('sheet-music').list(params.slug, {
+  const sheetMusicData = await supabase.storage.from('sheet-music').list(params.slug, {
     offset: 0,
     sortBy: { column: 'name', order: 'asc' },
   });
 
-  const files = data?.map((file) => {
+  const sheetMusicDataFromDb = await supabase
+    .from('sheet_music')
+    .select()
+    .eq('slug', params.slug)
+    .maybeSingle();
+
+  const referencesData = await supabase
+    .from('references')
+    .select()
+    .eq('sheet_music_id', sheetMusicDataFromDb.data.id);
+
+  const files = sheetMusicData.data?.map((file) => {
     return {
       name: file.name,
       url: supabase.storage.from('sheet-music').getPublicUrl(`${params.slug}/${file.name}`).data.publicUrl
@@ -15,6 +26,7 @@ export async function load({ params }) {
 
   return {
     files: files ?? [],
-    pieceName: params.slug
+    pieceName: params.slug,
+    references: referencesData.data || [],
   };
 }
