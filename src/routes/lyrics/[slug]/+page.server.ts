@@ -4,20 +4,26 @@ import { supabase } from '$lib/supabase';
 export const prerender = false;
 
 export async function load({ params }) {
-  const { data } = await supabase
+  const lyricsData = await supabase
     .from('lyrics')
     .select()
     .eq('id', (params.slug.split('-').findLast((el: string) => !isNaN(parseInt(el))) || ''))
     .maybeSingle();
 
-  const lyrics = await parseXml(data.file);
+  const referencesData = await supabase
+    .from('references')
+    .select()
+    .eq('lyrics_id', lyricsData.data.id);
+
+  const lyrics = await parseXml(lyricsData.data.file);
   const header = [{
-    title: data.title,
-    artist: data.artist,
+    title: lyricsData.data.title,
+    artist: lyricsData.data.artist,
   }];
 
   return {
     header: header || [],
     lyrics: lyrics.results || [],
+    references: referencesData.data || [],
   }
 }
