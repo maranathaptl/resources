@@ -10,7 +10,7 @@
 </script>
 
 {#if !link}
-  <div class={`mptl-tile${ isLocked ? ' is-locked' : '' }`} style={`--mptl-tile-background-image: url(${ lowResMedia })`}>
+  <div class={`mptl-tile${ isLocked ? ' is-locked' : '' }`} style={`--mptl-tile-background-image: url("${ lowResMedia }")`}>
     <div class="mptl-tile__overlay">
       {#if isLocked}
         <i class="mptl-tile__icon">
@@ -25,7 +25,7 @@
   </div>
 {:else}
   <a href={link}>
-    <div class={`mptl-tile${ isLocked ? ' is-locked' : '' }`} style={`--mptl-tile-background-image: url(${ lowResMedia })`}>
+    <div class={`mptl-tile${ isLocked ? ' is-locked' : '' }`} style={`--mptl-tile-background-image: url("${ lowResMedia }")`}>
       <div class="mptl-tile__overlay">
         {#if isLocked}
           <i class="mptl-tile__icon">
