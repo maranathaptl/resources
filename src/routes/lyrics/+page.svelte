@@ -49,7 +49,7 @@
 </form>
 <section class="grid-container">
   {#each reactiveData.files as item}
-    <a href={`/lyrics/${parseForUrl(item.title)}-${item.id}`}>
+    <a href={`/lyrics/${parseForUrl(item.title.replaceAll('/', ''))}-${item.id}`}>
       <div class="ms-card is-hoverable">
         <header class="ms-card__header">
           <div class="ms-card__mast">

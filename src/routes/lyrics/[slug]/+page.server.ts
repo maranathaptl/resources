@@ -4,10 +4,13 @@ import { supabase } from '$lib/supabase';
 export const prerender = false;
 
 export async function load({ params }) {
+  const id = params.slug.replaceAll('/', '').split('-').findLast((el: string) => !isNaN(parseInt(el))) || '';
+  console.log(id)
+
   const lyricsData = await supabase
     .from('lyrics')
     .select()
-    .eq('id', (params.slug.split('-').findLast((el: string) => !isNaN(parseInt(el))) || ''))
+    .eq('id', id)
     .maybeSingle();
 
   const referencesData = await supabase
