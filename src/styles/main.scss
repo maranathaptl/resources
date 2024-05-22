@@ -242,24 +242,12 @@ img, svg, video {
   background: var(--ms-theme-accent-alpha-400);
 }
 
-.mptl-lyrics-section {
-}
-
 .mptl-lyric-chunk {
+  width: fit-content;
   position: relative;
-
-  &:hover {
-    &::before {
-      position: absolute;
-      content: '🔗';
-      top: 0;
-      left: 0;
-
-      @include himig.breakpoint-create('large') {
-        left: calc(100% - 62%);
-      }
-    }
-  }
+  display: flex;
+  gap: himig.primitive-token-get('gap.md');
+  align-items: center;
 
   lines {
     tag[name='sb'] {

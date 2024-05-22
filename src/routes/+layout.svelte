@@ -1,8 +1,7 @@
 <script lang="ts">
   import { page } from '$app/stores';
   import '$styles/main.scss';
-
-  const currentPath = $page.url.pathname;
+  import MPTLNavbarItem from '$components/MPTLNavbarItem.svelte';
 </script>
 
 <div class="app">
@@ -15,8 +14,8 @@
         </a>
         <nav class="mptl-navbar">
           <ul class="flex ai-center gap-md" style="list-style: none">
-            <li class={`mptl-navbar__item${ currentPath === '/' ? ' is-active' : '' }`}><a href="/">Home</a></li>
-            <li class={`mptl-navbar__item${ currentPath === '/contact' ? ' is-active' : '' }`}><a href="/">Contact</a></li>
+            <MPTLNavbarItem link="/">Home</MPTLNavbarItem>
+            <MPTLNavbarItem link="/contact">Contact</MPTLNavbarItem>
           </ul>
         </nav>
       </section>

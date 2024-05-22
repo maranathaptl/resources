@@ -1,20 +1,16 @@
 import { supabase } from '$lib/supabase';
 
-export async function load({ url }) {
-  const { data } = await supabase.storage.from('lyrics').list('', {
-    offset: 0,
-    sortBy: { column: 'name', order: 'asc' },
-    limit: 27,
-    search: url.searchParams.get('q') || ''
-  });
+export const prerender = false;
 
-  const files = data?.filter((file) => file.name !== '.emptyFolderPlaceholder').map((file) => {
-    return {
-      name: file.name,
-    };
-  });
+export async function load({ url }) {
+  const { data } = await supabase
+    .from('lyrics')
+    .select()
+    .like('title', `%${url.searchParams.get('q') || ''}%`)
+    .order('title', { ascending: true })
+    .limit(27);
 
   return {
-    files: files ?? [],
+    files: data ?? [],
   };
 }

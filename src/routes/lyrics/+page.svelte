@@ -6,7 +6,13 @@
 
   export let data;
 
+  $: reactiveData = data;
+
   let value = $page.url.searchParams.get('q') || '';
+
+  function parseForUrl(title: string): string {
+    return title.toLowerCase().replaceAll(' ', '-');
+  }
 
   function handleSearch() {
     window.location.href = `/lyrics?q=${value}`;
@@ -42,12 +48,13 @@
   </MPTLButton>
 </form>
 <section class="grid-container">
-  {#each data.files as file}
-    <a href={`/lyrics/${file.name.replace('.xml', '')}`}>
+  {#each reactiveData.files as item}
+    <a href={`/lyrics/${parseForUrl(item.title)}-${item.id}`}>
       <div class="ms-card is-hoverable">
         <header class="ms-card__header">
           <div class="ms-card__mast">
-            <p class="weight-bold truncate-1">{file.name.replaceAll(/.xml/g, '').replaceAll('_', ' ').toUpperCase()}</p>
+            <p class="weight-bold truncate-1">{item.title}</p>
+            <small class="small">{item.artist === 'Unknown' ? 'Unknown Artist' : item.artist }</small>
           </div>
         </header>
       </div>
