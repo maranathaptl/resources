@@ -9,13 +9,12 @@
     <header class="pt-xl px-xl @large:pt-2xl">
       <section class="w-full max-w-xl mx-auto flex flow-column @medium:flow-row wrap-none gap-md jc-space-between ai-center">
         <a href="/" class="inline-block flex ai-center gap-sm">
-          <!--<img src={Logo} alt="Maranatha Resources" style="width: 32px; height: 32px;" />-->
           <h1 class="title">Maranatha Resources</h1>
         </a>
         <nav class="mptl-navbar">
           <ul class="flex ai-center gap-md" style="list-style: none">
             <MPTLNavbarItem link="/">Home</MPTLNavbarItem>
-            <MPTLNavbarItem link="/contact">Contact</MPTLNavbarItem>
+            <MPTLNavbarItem link="/report">Report a bug</MPTLNavbarItem>
           </ul>
         </nav>
       </section>
