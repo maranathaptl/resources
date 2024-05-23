@@ -6,7 +6,7 @@ export async function load({ url }) {
   const { data } = await supabase
     .from('lyrics')
     .select()
-    .like('title', `%${url.searchParams.get('q') || ''}%`)
+    .ilike('title', `%${url.searchParams.get('q') || ''}%`)
     .order('title', { ascending: true })
     .limit(27);
 
