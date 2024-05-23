@@ -5,7 +5,6 @@ export const prerender = false;
 
 export async function load({ params }) {
   const id = params.slug.replaceAll('/', '').split('-').findLast((el: string) => !isNaN(parseInt(el))) || '';
-  console.log(id)
 
   const lyricsData = await supabase
     .from('lyrics')
