@@ -3,6 +3,7 @@
   import MPTLFormField from '$components/MPTLFormField.svelte';
   import { page } from '$app/stores';
   import MPTLButton from '$components/MPTLButton.svelte';
+  import { goto } from '$app/navigation';
 
   export let data;
 
@@ -15,7 +16,7 @@
   }
 
   function handleSearch() {
-    window.location.href = `/lyrics?q=${value}`;
+    goto(`/lyrics?q=${value}`);
   }
 
 </script>
