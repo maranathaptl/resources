@@ -14,7 +14,7 @@
         <nav class="mptl-navbar">
           <ul class="flex ai-center gap-md" style="list-style: none">
             <MPTLNavbarItem link="/">Home</MPTLNavbarItem>
-            <MPTLNavbarItem link="/report">Report a bug</MPTLNavbarItem>
+            <MPTLNavbarItem link="mailto:webmaster@maranathaptl.org">Report a bug</MPTLNavbarItem>
           </ul>
         </nav>
       </section>
