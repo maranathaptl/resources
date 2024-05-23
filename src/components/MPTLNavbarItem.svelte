@@ -7,7 +7,7 @@
 </script>
 
 <li class="mptl-navbar__item" class:is-active={isActive}>
-  <a href="/">
+  <a href={link}>
     <slot />
   </a>
 </li>
