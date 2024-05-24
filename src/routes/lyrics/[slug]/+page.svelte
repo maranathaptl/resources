@@ -56,5 +56,5 @@
       {/each}
     </div>
   </section>
-  <MPTLReferences data={data.references} db="lyrics" id={data.lyricsId} />
+  <MPTLReferences references={data.references} linkedReferences={data.linkedReferences} />
 </section>

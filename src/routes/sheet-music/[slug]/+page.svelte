@@ -48,4 +48,4 @@
   </section>
 {/if}
 
-<MPTLReferences data={data.references} id={data.pieceId} db="sheet_music" />
+<MPTLReferences references={data.references} linkedReferences={data.linkedReferences} />
