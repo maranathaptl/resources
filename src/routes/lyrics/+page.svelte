@@ -12,7 +12,7 @@
   let value = $page.url.searchParams.get('q') || '';
 
   function parseForUrl(title: string): string {
-    return title.toLowerCase().replaceAll(' ', '-');
+    return title.toLowerCase().replaceAll(/[,.\-\/]/g, '').replaceAll(' ', '-').replaceAll('--', '-');
   }
 
   function handleSearch() {
@@ -50,7 +50,7 @@
 </form>
 <section class="grid-container">
   {#each reactiveData.files as item}
-    <a href={`/lyrics/${parseForUrl(item.title.replaceAll('/', ''))}-${item.id}`}>
+    <a href={`/lyrics/${parseForUrl(item.title)}--${item.id}`}>
       <div class="ms-card is-hoverable">
         <header class="ms-card__header">
           <div class="ms-card__mast">
