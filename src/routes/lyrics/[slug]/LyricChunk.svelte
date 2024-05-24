@@ -13,7 +13,7 @@
 
   function copyUrlWithId(id: string) {
     const url = new URL($page.url.href);
-    url.hash = id;
+    url.hash = getIdFromHeader(id);
     navigator.clipboard.writeText(url.href);
     alert('Url copied to clipboard!');
   }
