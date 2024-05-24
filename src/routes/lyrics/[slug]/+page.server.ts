@@ -27,5 +27,6 @@ export async function load({ params }) {
     header: header || [],
     lyrics: lyrics.results || [],
     references: referencesData.data || [],
+    lyricsId: lyricsData.data.id
   }
 }

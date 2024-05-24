@@ -1,5 +1,6 @@
 <script lang="ts">
   import SheetMusic from '$lib/images/sheet-music.png.webp';
+  import MPTLReferences from '$components/MPTLReferences.svelte';
 
   export let data;
 </script>
@@ -47,18 +48,4 @@
   </section>
 {/if}
 
-<h2 class="title mt-xl">References</h2>
-{#if data.references.length <= 0}
-  <p>No references to show.</p>
-{:else}
-  <ul class="mptl-references">
-    {#each data.references as reference}
-      <li class="flex flow-row gap-sm ai-center">
-        <a href={reference.url} class="ms-link" target="_blank">{ reference.title }</a>
-        <svg style="width: 16px; height: 16px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="var(--ms-theme-accent-600)" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-        </svg>
-      </li>
-    {/each}
-  </ul>
-{/if}
+<MPTLReferences data={data.references} id={data.pieceId} db="sheet_music" />

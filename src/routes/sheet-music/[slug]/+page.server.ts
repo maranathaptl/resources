@@ -17,6 +17,8 @@ export async function load({ params }) {
     .select()
     .eq('sheet_music_id', sheetMusicDataFromDb.data.id);
 
+  console.log(referencesData.data);
+
   const files = sheetMusicData.data?.map((file) => {
     return {
       name: file.name,
@@ -28,5 +30,6 @@ export async function load({ params }) {
     files: files ?? [],
     pieceName: params.slug,
     references: referencesData.data || [],
+    pieceId: sheetMusicDataFromDb.data.id
   };
 }

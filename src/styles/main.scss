@@ -277,3 +277,32 @@ img, svg, video {
 .mptl-references {
   list-style: none;
 }
+
+.primary-blink {
+  background: himig.token-get('primary-alpha-800');
+  animation: blink 1s infinite;
+}
+
+.accent-blink {
+  background: himig.token-get('accent-alpha-600');
+  animation: blink 1s infinite;
+}
+
+.surface-blink {
+  background: himig.token-get('surface-alpha-800');
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
