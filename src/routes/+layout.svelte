@@ -11,12 +11,16 @@
         <a href="/" class="inline-block flex ai-center gap-sm">
           <h1 class="title">Maranatha Resources</h1>
         </a>
-        <nav class="mptl-navbar">
-          <ul class="flex ai-center gap-md" style="list-style: none">
-            <MPTLNavbarItem link="/">Home</MPTLNavbarItem>
-            <MPTLNavbarItem link="mailto:webmaster@maranathaptl.org">Report a bug</MPTLNavbarItem>
-          </ul>
-        </nav>
+        {#if $page.url.pathname !== '/'}
+          <nav class="mptl-navbar">
+            <ul class="flex ai-center gap-md" style="list-style: none">
+              <MPTLNavbarItem link="/">Home</MPTLNavbarItem>
+              <MPTLNavbarItem link="/">Chords</MPTLNavbarItem>
+              <MPTLNavbarItem link="/lyrics">Lyrics</MPTLNavbarItem>
+              <MPTLNavbarItem link="/">Recordings</MPTLNavbarItem>
+            </ul>
+          </nav>
+        {/if}
       </section>
     </header>
 
@@ -25,9 +29,12 @@
     </main>
   </section>
 
-  <footer class="flex jc-center ai-center py-2xl">
+  <footer class="flex flow-column jc-center ai-center py-2xl">
     <small class="small align-center">
       Copyright &copy; { new Date().getFullYear() } Maranatha PTL Club of The Philippines
+    </small>
+    <small class="small align-center">
+      <a href="mailto:webmaster@maranathaptl.org">Report a bug</a>
     </small>
   </footer>
 </div>
