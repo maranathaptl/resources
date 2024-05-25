@@ -10,12 +10,14 @@
   $: reactiveData = data;
 
   let value = $page.url.searchParams.get('q') || '';
+  let staticValue: string;
 
   function parseForUrl(title: string): string {
     return title.toLowerCase().replaceAll(/[,.\-\/]/g, '').replaceAll(' ', '-').replaceAll('--', '-');
   }
 
   function handleSearch() {
+    staticValue = value.toString();
     goto(`/lyrics?q=${value}`);
   }
 
@@ -48,17 +50,21 @@
     </span>
   </MPTLButton>
 </form>
-<section class="grid-container">
-  {#each reactiveData.files as item}
-    <a href={`/lyrics/${parseForUrl(item.title)}--${item.id}`}>
-      <div class="ms-card is-hoverable">
-        <header class="ms-card__header">
-          <div class="ms-card__mast">
-            <p class="weight-bold truncate-1">{item.title}</p>
-            <small class="small">{item.artist === 'Unknown' ? 'Unknown Artist' : item.artist }</small>
-          </div>
-        </header>
-      </div>
-    </a>
-  {/each}
-</section>
+{#if reactiveData.files.length > 0}
+  <section class="grid-container">
+    {#each reactiveData.files as item}
+      <a href={`/lyrics/${parseForUrl(item.title)}--${item.id}`}>
+        <div class="ms-card is-hoverable">
+          <header class="ms-card__header">
+            <div class="ms-card__mast">
+              <p class="weight-bold truncate-1">{item.title}</p>
+              <small class="small">{item.artist === 'Unknown' ? 'Unknown Artist' : item.artist }</small>
+            </div>
+          </header>
+        </div>
+      </a>
+    {/each}
+  </section>
+{:else}
+  <p class="align-center my-xl">No lyrics found with the terms "{staticValue}".</p>
+{/if}
