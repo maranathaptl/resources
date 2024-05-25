@@ -34,7 +34,7 @@
       Copyright &copy; { new Date().getFullYear() } Maranatha PTL Club of The Philippines
     </small>
     <small class="small align-center">
-      <a href="mailto:webmaster@maranathaptl.org">Report a bug</a>
+      <a class="ms-link" href="mailto:webmaster@maranathaptl.org">Report a bug</a>
     </small>
   </footer>
 </div>
