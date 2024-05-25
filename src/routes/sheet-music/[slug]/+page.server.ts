@@ -24,8 +24,6 @@ export async function load({ params }) {
     .eq(`sheet_music_id`, sheetMusicDataFromDb.data.id)
     .maybeSingle();
 
-  console.log('linkedReferences', linkedReferences.data ?? {message: "no data"});
-
   let finalLinkedReferences;
 
   if (!linkedReferences.data) {
