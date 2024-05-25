@@ -5,6 +5,9 @@
   export let type: string = 'text';
   export let placeholder: string = helper || label;
   export let name: string = '';
+  export let required: boolean = false;
+  export let readonly: boolean = false;
+  export let disabled: boolean = false;
 
   const onInput = (e: any) => (value = e.target.value);
 </script>
@@ -19,6 +22,9 @@
     {placeholder}
     {name}
     {value}
+    {required}
+    {readonly}
+    {disabled}
     on:input={onInput}
   />
   {#if helper}
