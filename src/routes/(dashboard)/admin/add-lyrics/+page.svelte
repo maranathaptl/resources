@@ -16,7 +16,7 @@ export let form;
 <section class="mptl-pathbar">
   <nav aria-label="pathbar">
     <ul class="mptl-pathbar__wrapper">
-      <li><a href="/">Home</a></li>
+      <li><a href="/static">Home</a></li>
       <li class="is-active">Add Lyrics</li>
     </ul>
   </nav>
