@@ -79,7 +79,7 @@ main.content-wrap {
 );
 
 @include ms-utils.layout();
-@include ms-utils.color($include: 'fill');
+@include ms-utils.color();
 @include ms-utils.struct();
 @include ms-utils.typography($include: ('preset', 'weight', 'alignment'));
 
