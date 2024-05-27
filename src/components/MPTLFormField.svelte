@@ -8,11 +8,13 @@
   export let required: boolean = false;
   export let readonly: boolean = false;
   export let disabled: boolean = false;
+  export let error: boolean = false;
+
 
   const onInput = (e: any) => (value = e.target.value);
 </script>
 
-<label class="ms-form-field">
+<label class="ms-form-field" class:is-error={error}>
   {#if label}
     <span class="ms-form-field__label">{ label }</span>
   {/if}
