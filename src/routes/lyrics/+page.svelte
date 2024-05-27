@@ -17,8 +17,15 @@
   }
 
   function handleSearch() {
+    if (value === '') {
+      if ($page.url.searchParams.get('q')) {
+        $page.url.searchParams.delete('q');
+        goto($page.url);
+        return;
+      }
+    }
     staticValue = value.toString();
-    goto(`/lyrics?q=${value}`);
+    $page.url.searchParams.append('q', staticValue);
   }
 
 </script>
