@@ -15,7 +15,7 @@ export const actions = {
 
     const addToLyricsBucket = await supabase
       .storage
-      .from('lyrics')
+      .from('dev')
       .upload(`${title.toString().toUpperCase()} (${artist.toString().toUpperCase()}).xml`, file, {
         cacheControl: '3600',
         upsert: true,
@@ -24,11 +24,11 @@ export const actions = {
 
     const fromLyricsBucket = supabase
       .storage
-      .from('lyrics')
+      .from('dev')
       .getPublicUrl(<string>addToLyricsBucket.data?.path);
 
     const addToLyricsDb = await supabase
-      .from('lyrics')
+      .from('dev-lyrics')
       .insert({
         title,
         artist,

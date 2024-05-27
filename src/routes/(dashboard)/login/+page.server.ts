@@ -1,6 +1,5 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { supabase } from '$lib/supabase';
-import { goto } from '$app/navigation';
 
 export const actions = {
   default: async ({ request }) => {
@@ -18,10 +17,13 @@ export const actions = {
     });
 
     if (signInToAuth.error) {
-      console.error(signInToAuth.error)
-      return redirect(303, '/auth/error');
+      return fail(303, {
+        error: signInToAuth.error.toString(),
+        message: 'Invalid email or password',
+      });
     } else {
-      return redirect(303, '/admin/add-lyrics');
+
+      return redirect(303, '/admin');
     }
   }
 }

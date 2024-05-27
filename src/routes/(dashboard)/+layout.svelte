@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { page } from '$app/stores';
   import '$styles/main.scss';
   import MPTLNavbarItem from '$components/MPTLNavbarItem.svelte';
 
@@ -13,7 +12,7 @@
     const { data } = supabase.auth.onAuthStateChange((_, newSession) => {
       if (!newSession) {
         setTimeout(() => {
-          goto('/login', { invalidateAll: true });
+          goto('/admin', { invalidateAll: true });
         });
       }
       if (newSession?.expires_at !== session?.expires_at) {
@@ -29,19 +28,17 @@
   <section class="flex flow-column gap-xl wrap-none">
     <header class="pt-xl px-xl @large:pt-2xl">
       <section class="w-full max-w-xl mx-auto flex flow-column @medium:flow-row wrap-none gap-md jc-space-between ai-center">
-        <a href="/auth" class="inline-block flex ai-center gap-sm">
+        <a href="/admin" class="inline-block flex ai-center gap-sm">
           <h1 class="title">Maranatha Resources</h1>
         </a>
-        {#if $page.url.pathname !== '/'}
-          <nav class="mptl-navbar">
-            <ul class="flex ai-center gap-md" style="list-style: none">
-              <MPTLNavbarItem link="/admin/add-lyrics">Add Lyrics</MPTLNavbarItem>
-              <MPTLNavbarItem link="/admin/add-chords">Add Chords</MPTLNavbarItem>
-              <MPTLNavbarItem link="/admin/add-sheet-music">Add Sheet Music</MPTLNavbarItem>
-              <MPTLNavbarItem link="/admin/add-recordings">Recordings</MPTLNavbarItem>
-            </ul>
-          </nav>
-        {/if}
+        <nav class="mptl-navbar">
+          <ul class="flex ai-center gap-md" style="list-style: none">
+            <MPTLNavbarItem link="/admin/add-lyrics">Add Lyrics</MPTLNavbarItem>
+            <!--<MPTLNavbarItem link="/admin/add-chords">Add Chords</MPTLNavbarItem>
+            <MPTLNavbarItem link="/admin/add-sheet-music">Add Sheet Music</MPTLNavbarItem>
+            <MPTLNavbarItem link="/admin/add-recordings">Recordings</MPTLNavbarItem>-->
+          </ul>
+        </nav>
       </section>
     </header>
 

@@ -29,8 +29,12 @@
 <h1 class="title">Login</h1>
 
 <form method="post" class="flex flow-column gap-md p-xl r-lg fill-surface-300">
-  <MPTLFormField required label="Email" type="email" name="email" error={form?.emailMissing} helper={form?.emailMissing ? 'Title field is required.' : undefined} value={form?.email ? form?.email : ''} />
-  <MPTLFormField required label="Password" type="password" name="password" error={form?.passwordMissing} helper={form?.passwordMissing ? 'Title field is required.' : undefined} />
+  {#if form?.error}
+    <p>{ form?.error }</p>
+  {/if}
+
+  <MPTLFormField required label="Email" type="email" name="email" />
+  <MPTLFormField required label="Password" type="password" name="password" />
 
   <span class="w-full flex jc-end">
     <MPTLButton nativeType="submit" type="filled">Login</MPTLButton>
