@@ -1,7 +1,7 @@
 import { supabase } from '$lib/supabase';
 
 export function handleLinkTarget(link: string) {
-  const isLinkExternal = !link.startsWith('/') || !link.startsWith('#');
+  const isLinkExternal = !link.startsWith('/') && !link.startsWith('#');
   return isLinkExternal ? '_blank' : '_self';
 }
 
