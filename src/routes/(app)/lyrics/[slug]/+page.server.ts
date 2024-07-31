@@ -46,6 +46,7 @@ export async function load({ params }) {
     lyrics: lyrics.results || [],
     references: referencesData.data || [],
     linkedReferences: finalLinkedReferences,
-    lyricsId: lyricsData.data.id
+    lyricsId: lyricsData.data.id,
+    lyricsFile: lyricsData.data.file
   }
 }

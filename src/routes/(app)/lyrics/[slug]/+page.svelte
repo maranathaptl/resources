@@ -56,5 +56,10 @@
       {/each}
     </div>
   </section>
-  <MPTLReferences references={data.references} linkedReferences={data.linkedReferences} />
+  <MPTLReferences
+    references={data.references}
+    linkedReferences={data.linkedReferences}
+    hasFile
+    file={data.lyricsFile}
+  />
 </section>

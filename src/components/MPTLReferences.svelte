@@ -23,6 +23,8 @@
 
   export let references: Reference[];
   export let linkedReferences: LinkedReferences|null;
+  export let hasFile: boolean = false;
+  export let file: string;
 </script>
 
 {#if references.length > 0 || linkedReferences}
@@ -41,6 +43,18 @@
         {#if linkedReferences.sheet_music && $page.url.pathname.split('/')[1] !== 'sheet-music'}
           <MPTLReferenceItem type="linked" url={linkedReferences.sheet_music}>Sheet Music</MPTLReferenceItem>
         {/if}
+      {/if}
+      {#if hasFile}
+        <MPTLReferenceItem type="file" url={file}>OpenLP File</MPTLReferenceItem>
+      {/if}
+    </ul>
+  </section>
+{:else}
+  <section>
+    <h2 class="title mt-xl">References</h2>
+    <ul class="mptl-references">
+      {#if hasFile}
+        <MPTLReferenceItem type="file" url={file}>OpenLP File</MPTLReferenceItem>
       {/if}
     </ul>
   </section>
