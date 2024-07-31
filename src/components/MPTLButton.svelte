@@ -31,3 +31,10 @@
     {/if}
   </a>
 {/if}
+
+<style lang="scss">
+  .ms-button__icon {
+    display: grid;
+    place-items: center;
+  }
+</style>

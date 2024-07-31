@@ -49,6 +49,40 @@ main.content-wrap {
 }
 
 @include ms-button.render();
+@include ms-button.extend('small') {
+  @include ms-button.struct((
+    'padding': ('sm' 'md'),
+  ));
+  @include ms-button.typography((
+    'size': 'xs',
+  ))
+}
+@include ms-button.extend('warning.filled') {
+  @include ms-button.color((
+    'fill': 'ms-yellow.400',
+    'ink': 'ms-yellow.ink',
+    'border': 'ms-yellow.400'
+  ));
+
+  &:hover,
+  &:focus {
+    @include ms-button.color((
+      'fill': 'ms-yellow.300',
+      'border': 'ms-yellow.300'
+    ));
+  }
+
+  &:focus {
+    @include himig.key-bind('button-outline', 2px solid rgba(himig.primitive-token-get('ms-yellow.400'), 0.5));
+  }
+
+  &:active {
+    @include ms-button.color((
+      'fill': 'ms-yellow.200',
+      'border': 'ms-yellow.200'
+    ));
+  }
+}
 .ms-button {
   // height: fit-content;
 }
@@ -292,6 +326,22 @@ img, svg, video {
 .surface-blink {
   background: himig.token-get('surface-alpha-800');
   animation: blink 1s infinite;
+}
+
+.dynamic-header {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: himig.primitive-token-get('gap.md');
+
+  @include himig.breakpoint-create('large') {
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    // gap: himig.primitive-token-get('gap.6xl');
+  }
 }
 
 @keyframes blink {
