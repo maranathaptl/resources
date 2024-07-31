@@ -1,11 +1,12 @@
 <script lang="ts">
   import MPTLButton from '$components/MPTLButton.svelte';
   import { page } from '$app/stores';
+  import type { LyricsResult } from '$lib/types';
 
   $: isHovered = false;
 
-  export let id;
-  export let lyric;
+  export let id: string;
+  export let lyric: LyricsResult;
 
   function getIdFromHeader(header: string): string {
     return header.replace(/\s/g, '-').replace('.', '').toLowerCase();
