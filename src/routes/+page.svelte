@@ -28,7 +28,7 @@
     media={Chords}
     lowResMedia={ChordsLowRes}
     mediaAlt="Chords hero"
-    link="/chords"
+    isLocked
   />
   <MPTLTile
     title="Lyrics"
