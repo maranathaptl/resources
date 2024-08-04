@@ -15,7 +15,11 @@
     800: #5a0404,
   ),
   $surface: 'ms-white',
-  $background: 'ms-white.200'
+  $background: 'ms-white.200',
+  $disabled: (
+    'default': rgba(#000, 12%),
+    'ink': rgba(#000, 34%)
+  ),
 );
 
 .app {
@@ -56,6 +60,32 @@ main.content-wrap {
   @include ms-button.typography((
     'size': 'xs',
   ))
+}
+@include ms-button.extend('warning.outlined') {
+  @include ms-button.color((
+    'ink': 'ms-yellow.400',
+    'border': 'ms-yellow.400'
+  ));
+
+  &:hover,
+  &:focus {
+    @include ms-button.color((
+      'fill': 'ms-yellow.300',
+      'ink': 'ms-yellow.ink',
+      'border': 'ms-yellow.300'
+    ));
+  }
+
+  &:focus {
+    @include himig.key-bind('button-outline', 2px solid rgba(himig.primitive-token-get('ms-yellow.400'), 0.5));
+  }
+
+  &:active {
+    @include ms-button.color((
+      'fill': 'ms-yellow.200',
+      'border': 'ms-yellow.200'
+    ));
+  }
 }
 @include ms-button.extend('warning.filled') {
   @include ms-button.color((
@@ -106,6 +136,18 @@ main.content-wrap {
   }
 }
 @include ms-form-field.render();
+.ms-form-field {
+  &:has(.ms-form-field__input[type='file']) {
+    --ms-form-field-label-ink: var(--ms-theme-primary-ink) !important;
+    --ms-form-field-helper-ink: var(--ms-theme-primary-ink) !important;
+  }
+
+  .ms-form-field__input[type='file'] {
+    --ms-form-field-fill: var(--ms-theme-surface-300) !important;
+    --ms-form-field-ink: var(--ms-theme-surface-ink) !important;
+    --ms-form-field-border: var(--ms-theme-surface-400) !important;
+  }
+}
 @include ms-link.render(
   $color: (
     ink: 'accent-600'

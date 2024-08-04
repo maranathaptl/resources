@@ -20,7 +20,7 @@
     {/if}
   </button>
 {:else}
-  <a class={`ms-button${ handleVariants(type) }${ isDisabled ? ' is-disabled' : '' }`} href={link} target={handleLinkTarget(link)}>
+  <a class={`ms-button${ handleVariants(type) }${ isDisabled ? ' is-disabled' : '' }`} href={link} target={handleLinkTarget(link)} on:click>
     {#if $$slots.icon}
       <i class="ms-button__icon">
         <slot name="icon" />
