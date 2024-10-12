@@ -17,18 +17,25 @@ export async function load({ url }) {
   const artist = separatorIndex !== -1 ? urlQuery.substring(separatorIndex + 2) : urlQuery;
   const query = `${title ? `title.ilike.%${title || ''}%` : ''}${ title && artist ? ',' : '' }${artist ? `artist.ilike.%${artist || ''}%` : ''}`;
 
-  const { data } = await supabase
+  const { data } = urlQuery !== '' ? await supabase
     .from('lyrics')
     .select('*')
     .or(query)
     .order('id', { ascending: false })
+    .range(offset, offset + 26) : await supabase
+    .from('lyrics')
+    .select('*')
+    .order('id', { ascending: false })
     .range(offset, offset + 26);
 
-  const { data: count } = await supabase
+  const { data: count } = urlQuery !== '' ? await supabase
     .from('lyrics')
     .select()
     .or(query)
-    .order('id', { ascending: false })
+    .order('id', { ascending: false }) : await supabase
+    .from('lyrics')
+    .select('*')
+    .order('id', { ascending: false });
 
   return {
     files: data ?? [],
