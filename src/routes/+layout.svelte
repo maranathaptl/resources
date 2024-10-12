@@ -2,6 +2,8 @@
   import { page } from '$app/stores';
   import '$styles/main.scss';
   import MPTLNavbarItem from '$components/MPTLNavbarItem.svelte';
+
+  let { children } = $props();
 </script>
 
 <div class="app">
@@ -25,7 +27,7 @@
     </header>
 
     <main class="content-wrap">
-      <slot/>
+      {@render children()}
     </main>
   </section>
 

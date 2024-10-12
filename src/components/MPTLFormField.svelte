@@ -10,8 +10,6 @@
   export let disabled: boolean = false;
   export let error: boolean = false;
 
-  $: valueBuffer = value;
-
   const onInput = (e: any) => (value = e.target.value);
 </script>
 

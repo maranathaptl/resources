@@ -7,33 +7,36 @@ export async function load({ url }) {
   // @ts-ignore
   const offset = (page - 1) * 27 || 0;
 
-  const urlQuery = url.searchParams.get('q');
+  const urlQuery = url.searchParams.get('q') || '';
   const separator = '@';
   const separatorIndex = urlQuery?.indexOf(separator);
 
   // @ts-ignore
   const title = separatorIndex !== -1 ? urlQuery.substring(0, (separatorIndex - 1)) : urlQuery;
   // @ts-ignore
-  const artist = separatorIndex !== - 1 ? urlQuery.substring(separatorIndex + 2) : '';
-  const query = `${title ? `title.ilike.%${title || ''}%` : ''}${ title && artist ? ',' : '' }${artist ? `artist.ilike.%${artist || ''}%` : ''}` || '*';
+  const artist = separatorIndex !== -1 ? urlQuery.substring(separatorIndex + 2) : urlQuery;
+  const query = `${title ? `title.ilike.%${title || ''}%` : ''}${ title && artist ? ',' : '' }${artist ? `artist.ilike.%${artist || ''}%` : ''}`;
 
-  console.log(title);
-  console.log(artist);
+  const { data } = urlQuery !== '' ? await supabase
+    .from('lyrics')
+    .select('*')
+    .or(query)
+    .order('id', { ascending: false })
+    .range(offset, offset + 26) : await supabase
+    .from('lyrics')
+    .select('*')
+    .order('id', { ascending: false })
+    .range(offset, offset + 26);
 
-  console.log(query);
-
-  const { data } = await supabase
+  const { data: count } = urlQuery !== '' ? await supabase
     .from('lyrics')
     .select()
     .or(query)
-    .order('id', { ascending: false })
-    .range(offset, offset + 26)
-
-  const { data: count } = await supabase
+    .order('id', { ascending: false }) : await supabase
     .from('lyrics')
-    .select()
-    .or(query)
-    .order('id', { ascending: false })
+    .select('*')
+    .order('id', { ascending: false });
+
 
   return {
     files: data ?? [],

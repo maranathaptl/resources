@@ -2,33 +2,46 @@
   import { handleLinkTarget, handleVariants } from '$lib/helpers';
   import type { Optional } from '$lib/types';
 
-  export let type: Optional<string> = undefined;
-  export let link: Optional<string> = undefined;
-  export let nativeType: Optional<'button'|'submit'|'reset'> = undefined;
-  export let isDisabled: boolean = false;
+  let {
+    children,
+    icon,
+    class: CLASS,
+    type,
+    link,
+    nativeType,
+    isDisabled = false,
+    ...props
+  } : {
+    children: Optional<any>,
+    icon: Optional<any>
+    class: Optional<any>,
+    type: Optional<string>,
+    link: Optional<string>,
+    nativeType: Optional<'button'|'submit'|'reset'>,
+    isDisabled: boolean
+  } = $props();
 </script>
 
+{#snippet BUTTON_BASE()}
+  {#if icon}
+    <i class="ms-button__icon">
+      {@render icon()}
+    </i>
+  {/if}
+  {#if children}
+    <span class="ms-button__label">
+      {@render children()}
+    </span>
+  {/if}
+{/snippet}
+
 {#if !link}
-  <button class={`ms-button${ handleVariants(type) }`} type={nativeType} disabled={isDisabled} on:click>
-    {#if $$slots.icon}
-      <i class="ms-button__icon">
-        <slot name="icon" />
-      </i>
-    {/if}
-    {#if $$slots.default}
-      <span class="ms-button__label"><slot /></span>
-    {/if}
+  <button class={`ms-button${ handleVariants(type) }${ CLASS ? ' ' + CLASS : '' }`} {...props} type={nativeType} disabled={isDisabled}>
+    {@render BUTTON_BASE()}
   </button>
 {:else}
-  <a class={`ms-button${ handleVariants(type) }${ isDisabled ? ' is-disabled' : '' }`} aria-disabled={isDisabled} href={link} target={handleLinkTarget(link)} on:click>
-    {#if $$slots.icon}
-      <i class="ms-button__icon">
-        <slot name="icon" />
-      </i>
-    {/if}
-    {#if $$slots.default}
-      <span class="ms-button__label"><slot /></span>
-    {/if}
+  <a class={`ms-button${ handleVariants(type) }${ CLASS ? ' ' + CLASS : '' }${ isDisabled ? ' is-disabled' : '' }`} {...props} aria-disabled={isDisabled} href={link} target={handleLinkTarget(link)}>
+    {@render BUTTON_BASE()}
   </a>
 {/if}
 
