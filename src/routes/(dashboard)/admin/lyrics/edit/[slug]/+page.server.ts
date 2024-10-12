@@ -35,9 +35,6 @@ export const actions = {
     const file = fromForm.get('file');
 
     if (!id) return fail(400, { id, idMissing: true });
-    if (!title) return fail(400, { title, titleMissing: true });
-    if (!artist) return fail(400, { artist, artistMissing: true });
-    if (!file) return fail(400, { file, fileMissing: true });
 
     const { error } = await supabase
       .from('lyrics')
@@ -51,7 +48,7 @@ export const actions = {
       return fail(500, { error });
     }
 
-    if (file) {
+    if (file && (title && artist)) {
       const addToLyricsBucket = await supabase
         .storage
         .from('lyrics')

@@ -41,8 +41,8 @@
     <div class="none">
       <MPTLFormField label="ID" name="id" value={data.lyricsId} />
     </div>
-    <MPTLFormField label="Title" name="title" value={form?.title ? form?.title : data.header[0].title} />
-    <MPTLFormField label="Artist" name="artist" value={ form?.artist ? form?.artist : data.header[0].artist } />
+    <MPTLFormField label="Title" name="title" value={ data.header[0].title} />
+    <MPTLFormField label="Artist" name="artist" value={ data.header[0].artist } />
     <div class="flex gap-sm">
       {#if !isEditingFile}
         <MPTLFormField label="File" value={ decodeURIComponent(data.lyricsFile.split('lyrics/')[1]) } disabled />
@@ -52,7 +52,7 @@
           </svg>
         </MPTLButton>
       {:else}
-        <MPTLFormField label="File (.xml)" name="file" type="file" value={form?.file ? form?.file : null} />
+        <MPTLFormField label="File (.xml)" name="file" type="file" />
         <MPTLButton type="error outlined small icon-only" on:click={() => isEditingFile = !isEditingFile}>
           <svg style="--ms-button-icon-size: 16px" slot="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />

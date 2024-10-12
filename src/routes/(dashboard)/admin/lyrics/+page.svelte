@@ -8,10 +8,15 @@
 
   export let data;
 
-  $: reactiveData = data;
-
+  const currPage = $page.url.searchParams.get('p') ? $page?.url?.searchParams?.get('p') : '1';
   let value = $page.url.searchParams.get('q') || '';
   let staticValue: string;
+
+  $: reactiveData = data;
+  // @ts-ignore - TS considers this as a string|null
+  $: reactivePage = parseInt(currPage);
+
+  console.log($page.url.pathname + '?' + $page.url.searchParams.toString());
 
   function parseForUrl(title: string): string {
     return title.toLowerCase().replaceAll(/[,.\-\/]/g, '').replaceAll(' ', '-').replaceAll('--', '-');
@@ -19,12 +24,22 @@
 
   function deleteLyrics(id: number) {
     supabase
-      .from('lyrics')
+      .from('dev-lyrics')
       .delete()
       .eq('id', id)
       .then(() => {
         goto($page.url);
       });
+  }
+
+  function nextPage() {
+    $page.url.searchParams.set('p', (reactivePage + 1).toString());
+    goto($page.url.pathname + '?' + $page.url.searchParams.toString(), { keepFocus: true });
+  }
+
+  function prevPage() {
+    $page.url.searchParams.set('p', (reactivePage - 1).toString());
+    goto($page.url.pathname + '?' + $page.url.searchParams.toString(), { keepFocus: true });
   }
 
   function handleSearch() {
@@ -36,7 +51,7 @@
       }
     }
     staticValue = value.toString();
-    $page.url.searchParams.append('q', staticValue);
+    $page.url.searchParams.set('q', staticValue);
   }
 </script>
 
@@ -73,6 +88,24 @@
   </MPTLButton>
 </section>
 
+{#if reactiveData.files.length >= 27}
+  <form action="">
+    <section class="w-full flex gap-sm jc-center ai-center">
+      <MPTLButton type="outlined icon-only" isDisabled={reactivePage - 1 !== 0} on:click={() => prevPage()}>
+        <svg slot="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+      </MPTLButton>
+      <input type="text" value={reactivePage} style="padding: 0.5rem; width: calc(3ch + 1rem); font-size: 14px"> / <span>{Math.ceil(reactiveData.count / 27)}</span>
+      <MPTLButton type="outlined icon-only" isDisabled={Math.ceil(reactiveData.count / 27) === reactivePage} on:click={() => nextPage()}>
+        <svg slot="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+      </MPTLButton>
+    </section>
+  </form>
+{/if}
+
 {#if reactiveData.files.length > 0}
   <section class="grid-container">
     {#each reactiveData.files as item}
@@ -80,7 +113,7 @@
         <header class="ms-card__header">
           <div class="ms-card__mast" style="max-width: calc(100% - 120px)">
             <p class="weight-bold truncate-1" title="{item.title}">{item.title}</p>
-            <small class="small">{item.artist === 'Unknown' ? 'Unknown Artist' : item.artist }</small>
+            <small class="small truncate-1">{item.artist === 'Unknown' ? 'Unknown Artist' : item.artist }</small>
           </div>
           <div class="flex flow-row wrap-none gap-sm h-min">
             <MPTLButton link={`/admin/lyrics/edit/${parseForUrl(item.title)}--${item.id}`} type="warning filled small icon-only">

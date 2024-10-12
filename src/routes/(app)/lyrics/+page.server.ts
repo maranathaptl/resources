@@ -7,7 +7,7 @@ export async function load({ url }) {
     .from('lyrics')
     .select()
     .or(`title.ilike.%${url.searchParams.get('q') || ''}%, artist.ilike.%${url.searchParams.get('q') || ''}%`)
-    .order('title', { ascending: true })
+    .order('id', { ascending: false })
     .limit(27);
 
   return {
