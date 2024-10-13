@@ -4,21 +4,10 @@
   import LyricChunk from './LyricChunk.svelte';
   import MPTLReferences from '$components/MPTLReferences.svelte';
 
-  export let data: any = [];
+  let { data } = $props();
 
   function parseTitle(title: string): string {
     return title.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase());
-  }
-
-  function getIdFromHeader(header: string): string {
-    return header.replace(/\s/g, '-').replace('.', '').toLowerCase();
-  }
-
-  function copyUrlWithId(id: string) {
-    const url = new URL($page.url.href);
-    url.hash = id;
-    navigator.clipboard.writeText(url.href);
-    alert('Url copied to clipboard!');
   }
 
   const id = $page.url.href.split('#')[1] ? $page.url.href.split('#')[1] : '';

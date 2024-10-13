@@ -9,6 +9,7 @@
     type,
     link,
     nativeType,
+    onclick,
     isDisabled = false,
     ...props
   } : {
@@ -18,6 +19,7 @@
     type: Optional<string>,
     link: Optional<string>,
     nativeType: Optional<'button'|'submit'|'reset'>,
+    onclick: Optional<() => void>,
     isDisabled: boolean
   } = $props();
 </script>
@@ -36,7 +38,7 @@
 {/snippet}
 
 {#if !link}
-  <button class={`ms-button${ handleVariants(type) }${ CLASS ? ' ' + CLASS : '' }`} {...props} type={nativeType} disabled={isDisabled}>
+  <button class={`ms-button${ handleVariants(type) }${ CLASS ? ' ' + CLASS : '' }`} {...props} {onclick} type={nativeType} disabled={isDisabled}>
     {@render BUTTON_BASE()}
   </button>
 {:else}
