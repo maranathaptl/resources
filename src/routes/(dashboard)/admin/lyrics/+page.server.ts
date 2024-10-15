@@ -28,18 +28,15 @@ export async function load({ url }) {
     .order('id', { ascending: false })
     .range(offset, offset + 26);
 
-  const { data: count } = urlQuery !== '' ? await supabase
+  const { count } = urlQuery !== '' ? await supabase
     .from('lyrics')
-    .select()
-    .or(query)
-    .order('id', { ascending: false }) : await supabase
+    .select('*', { count: 'exact', head: true })
+    .or(query) : await supabase
     .from('lyrics')
-    .select('*')
-    .order('id', { ascending: false });
-
+    .select('*', { count: 'exact', head: true });
 
   return {
     files: data ?? [],
-    count: count?.length ?? 0,
+    count: count ?? 0,
   };
 }
