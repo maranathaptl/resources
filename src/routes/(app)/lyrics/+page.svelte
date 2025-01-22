@@ -29,7 +29,8 @@
       .toLowerCase()
       .replace(/[,./-]/g, '')
       .replace(/\s+/g, '-')
-      .replace(/--+/g, '-');
+      .replace(/--+/g, '-')
+      .replace('?', '');
   }
 
   function nextPage(e: Event) {
@@ -135,7 +136,7 @@
 {#if files.length > 0}
   <section class="grid-container">
     {#each files as item}
-      <a href={`/lyrics/${parseForUrl(item.title)}--${item.id}`}>
+      <a href={`/lyrics/${encodeURI(`${parseForUrl(item.title)}--${item.id}`)}`}>
         <div class="ms-card is-hoverable">
           <header class="ms-card__header">
             <div class="ms-card__mast">
@@ -149,4 +150,26 @@
   </section>
 {:else}
   <p class="align-center my-xl">No lyrics found with the terms "{staticValue}".</p>
+{/if}
+
+{#if files.length > 0}
+  <form onsubmit={(e) => handlePageChange(e)}>
+    <section class="w-full flex gap-sm jc-center ai-center">
+      <MPTLButton nativeType="button" type="outlined icon-only" isDisabled={parseInt(currPage) - 1 === 0} onclick={(e) => prevPage(e)}>
+        {#snippet icon()}
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+        {/snippet}
+      </MPTLButton>
+      <input type="text" bind:value={currPage} style="padding: 0.5rem; width: calc(3ch + 1rem); font-size: 14px"> / <span>{Math.ceil(count / 27)}</span>
+      <MPTLButton nativeType="button" type="outlined icon-only" isDisabled={Math.ceil(count / 27) === parseInt(currPage)} onclick={(e) => nextPage(e)}>
+        {#snippet icon()}
+          <svg slot="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
+        {/snippet}
+      </MPTLButton>
+    </section>
+  </form>
 {/if}
