@@ -30,8 +30,7 @@ export let form;
   <MPTLFormField required label="Artist" type="text" name="artist" error={form?.artistMissing} helper={form?.artistMissing ? 'Artist field is required.' : 'Put \'Unknown Artist\' if there are no known artists.'} value={form?.artist ? form?.artist : ''} />
   <label class="ms-select-field">
     <span class="ms-select-field__label">Category</span>
-    <select class="ms-select-field__input" name="type" required>
-      <option selected disabled value>--Select a category--</option>
+    <select class="ms-select-field__input" name="category" required>
       <option selected={form?.category === 'praising'} value="praising">Praising</option>
       <option selected={form?.category === 'worship'} value="worship">Worship</option>
     </select>

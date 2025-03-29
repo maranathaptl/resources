@@ -29,21 +29,28 @@ export const actions = {
       .from('lyrics')
       .getPublicUrl(<string>addToLyricsBucket.data?.path);
 
-    const addToLyricsDb = await supabase
-      .from('lyrics')
-      .insert({
-        title,
-        artist,
-        file: fromLyricsBucket.data?.publicUrl,
-      });
+    try {
+      await supabase
+        .from('lyrics')
+        .insert({
+          title,
+          artist,
+          file: fromLyricsBucket.data?.publicUrl,
+        });
+    } catch (e) {
+      console.log(e);
+    }
 
-    const addToSongsDb = await supabase
-      .from('songs')
-      .insert({
-        title,
-        author: artist,
-        category: category,
-        created_at: new Date(),
-      });
+    try {
+      await supabase
+        .from('songs')
+        .insert({
+          title,
+          author: artist,
+          category,
+        });
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
