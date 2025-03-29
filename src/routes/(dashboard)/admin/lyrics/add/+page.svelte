@@ -31,8 +31,8 @@ export let form;
   <label class="ms-select-field">
     <span class="ms-select-field__label">Category</span>
     <select class="ms-select-field__input" name="category" required>
-      <option selected={form?.category === 'praising'} value="praising">Praising</option>
-      <option selected={form?.category === 'worship'} value="worship">Worship</option>
+      <option value="praising">Praising</option>
+      <option value="worship">Worship</option>
     </select>
   </label>
   <label class="flex flow-column gap-sm py-md px-lg r-sm" class:ink-error-400={form?.fileMissing} style={`border: 2px solid var(--ms-theme-${ form?.fileMissing ? 'error' : 'surface' }-400);`}>
