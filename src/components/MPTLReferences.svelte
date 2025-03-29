@@ -1,6 +1,5 @@
 <script lang="ts">
   import MPTLReferenceItem from '$components/MPTLReferenceItem.svelte';
-  import { supabase } from '$lib/supabase';
   import { page } from '$app/stores';
 
   type Reference = {
