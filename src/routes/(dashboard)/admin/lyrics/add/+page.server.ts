@@ -47,7 +47,7 @@ export const actions = {
         .insert({
           title,
           author: artist,
-          category,
+          category: category,
         });
     } catch (e) {
       console.log(e);
