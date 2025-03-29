@@ -3,6 +3,7 @@
 @use '@matteusan/himig/ms-card';
 @use '@matteusan/himig/ms-form-field';
 @use '@matteusan/himig/ms-link';
+@use '@matteusan/himig/ms-select-field';
 @use '@matteusan/himig/ms-utils';
 
 @include himig.init(
@@ -153,6 +154,8 @@ main.content-wrap {
     ink: 'accent-600'
   )
 );
+
+@include ms-select-field.render();
 
 @include ms-utils.layout();
 @include ms-utils.color();

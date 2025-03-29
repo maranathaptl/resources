@@ -28,6 +28,14 @@ export let form;
 <form method="post" enctype="multipart/form-data" class="flex flow-column gap-md p-xl r-lg fill-surface-300">
   <MPTLFormField required label="Title" type="text" name="title" error={form?.titleMissing} helper={form?.titleMissing ? 'Title field is required.' : undefined} value={form?.title ? form?.title : ''} />
   <MPTLFormField required label="Artist" type="text" name="artist" error={form?.artistMissing} helper={form?.artistMissing ? 'Artist field is required.' : 'Put \'Unknown Artist\' if there are no known artists.'} value={form?.artist ? form?.artist : ''} />
+  <label class="ms-select-field">
+    <span class="ms-select-field__label">Category</span>
+    <select class="ms-select-field__input" name="type" required>
+      <option selected disabled value>--Select a category--</option>
+      <option selected={form?.category === 'praising'} value="praising">Praising</option>
+      <option selected={form?.category === 'worship'} value="worship">Worship</option>
+    </select>
+  </label>
   <label class="flex flow-column gap-sm py-md px-lg r-sm" class:ink-error-400={form?.fileMissing} style={`border: 2px solid var(--ms-theme-${ form?.fileMissing ? 'error' : 'surface' }-400);`}>
     <span class="small weight-normal">File (.xml)</span>
     <input type="file" required name="file" accept="text/xml" value={form?.file ? form?.file : null} />
