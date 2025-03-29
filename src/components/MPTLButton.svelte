@@ -19,7 +19,7 @@
     type: Optional<string>,
     link: Optional<string>,
     nativeType: Optional<'button'|'submit'|'reset'>,
-    onclick: Optional<() => void>,
+    onclick: Optional<(e: any) => void>,
     isDisabled: boolean
   } = $props();
 </script>

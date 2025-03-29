@@ -1,10 +1,19 @@
 <script lang="ts">
-  export let url: string;
-  export let type: string|undefined = undefined;
+  import type { Optional } from '$lib/types';
+
+  let {
+    url,
+    type,
+    onclick
+  } : {
+    type: Optional<string>,
+    url: string,
+    onclick: Optional<(e: any) => void>
+  } = $props();
 </script>
 
 <li class="flex flow-row gap-sm ai-center">
-  <a href={url} class="ms-link" target="_blank">
+  <a href={url} class="ms-link" onclick={onclick}>
     <slot />
   </a>
   {#if type === 'linked'}

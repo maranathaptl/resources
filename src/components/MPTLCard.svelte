@@ -2,8 +2,13 @@
   import { handleLinkTarget, handleVariants } from '$lib/helpers';
   import type { Optional } from '$lib/types';
 
-  export let type: Optional<string>;
-  export let link: Optional<string>;
+  let {
+    type,
+    link
+  } : {
+    type: Optional<string>,
+    link: Optional<string>
+  } = $props();
 </script>
 
 {#if link}
