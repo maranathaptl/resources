@@ -2,29 +2,30 @@
 	"name": "svelte-port",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "VITE_DEBUG=true vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"devDependencies": {
-		"@matteusan/himig": "^1.5.1",
+		"@matteusan/himig": "^1.7.2",
 		"@nonsugarless/webp-converter": "^1.0.4",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-vercel": "^5.3.0",
-		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/kit": "^2.20.6",
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"@sveltejs/vite-plugin-svelte-inspector": "^4.0.1",
 		"@types/xmldom": "^0.1.34",
 		"mdsvex": "^0.11.0",
-		"sass": "^1.75.0",
+		"sass": "^1.87.0",
 		"supabase": ">=1.8.1",
-		"svelte": "^5.0.0-next.264",
+		"svelte": "^5.28.2",
 		"svelte-check": "^3.6.0",
 		"svelte-preprocess": "^5.1.4",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
-		"vite": "5.4.6"
+		"vite": "^6.2.6"
 	},
 	"type": "module",
 	"dependencies": {

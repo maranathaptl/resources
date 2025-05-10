@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import '$styles/main.scss';
   import MPTLNavbarItem from '$components/MPTLNavbarItem.svelte';
+  import type { LayoutProps } from './$types';
 
-  let { children } = $props();
+  let { children }: LayoutProps = $props();
 </script>
 
 <div class="app">
@@ -13,7 +14,7 @@
         <a href="/" class="inline-block flex ai-center gap-sm">
           <h1 class="title">Maranatha Resources</h1>
         </a>
-        {#if $page.url.pathname !== '/'}
+        {#if page.url.pathname !== '/'}
           <nav class="mptl-navbar">
             <ul class="flex ai-center gap-md" style="list-style: none">
               <MPTLNavbarItem link="/">Home</MPTLNavbarItem>
@@ -25,7 +26,6 @@
         {/if}
       </section>
     </header>
-
     <main class="content-wrap">
       {@render children()}
     </main>

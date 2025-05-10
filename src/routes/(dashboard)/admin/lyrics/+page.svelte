@@ -1,6 +1,6 @@
 <script lang="ts">
   import MPTLFormField from '$components/MPTLFormField.svelte';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import MPTLButton from '$components/MPTLButton.svelte';
   import { goto } from '$app/navigation';
   import Lyrics from '$lib/images/lyrics.png.webp';
@@ -13,8 +13,8 @@
 
   let { data }: Props = $props();
 
-  let currPage = $state($page.url.searchParams.get('p') || '1');
-  let value = $state($page.url.searchParams.get('q') || '');
+  let currPage = $state(page.url.searchParams.get('p') || '1');
+  let value = $state(page.url.searchParams.get('q') || '');
   let staticValue: string = $state('');
 
   let files = $derived(data.files);

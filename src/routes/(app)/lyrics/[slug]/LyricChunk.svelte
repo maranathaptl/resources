@@ -1,6 +1,6 @@
 <script lang="ts">
   import MPTLButton from '$components/MPTLButton.svelte';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import type { LyricsResult } from '$lib/types';
 
   let { id, lyric, ...props }: { id: string, lyric: LyricsResult } = $props();
@@ -12,7 +12,7 @@
   }
 
   function copyUrlWithId(id: string) {
-    const url = new URL($page.url.href);
+    const url = new URL(page.url.href);
     url.hash = getIdFromHeader(id);
     navigator.clipboard.writeText(url.href);
     alert('Url copied to clipboard!');

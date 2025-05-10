@@ -1,6 +1,6 @@
 <script lang="ts">
   import Lyrics from '$lib/images/lyrics.png.webp';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import LyricChunk from './LyricChunk.svelte';
   import MPTLReferences from '$components/MPTLReferences.svelte';
 
@@ -10,7 +10,7 @@
     return title.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase());
   }
 
-  const id = $page.url.href.split('#')[1] ? $page.url.href.split('#')[1] : '';
+  const id = page.url.href.split('#')[1] ? page.url.href.split('#')[1] : '';
 </script>
 
 <svelte:head>

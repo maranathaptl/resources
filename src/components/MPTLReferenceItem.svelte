@@ -4,17 +4,19 @@
   let {
     url,
     type,
-    onclick
+    onclick,
+    children
   } : {
     type: Optional<string>,
     url: string,
     onclick: Optional<(e: any) => void>
+    children: () => any
   } = $props();
 </script>
 
 <li class="flex flow-row gap-sm ai-center">
   <a href={url} class="ms-link" onclick={onclick}>
-    <slot />
+    {@render children()}
   </a>
   {#if type === 'linked'}
     <svg style="width: 16px; height: 16px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="var(--ms-theme-accent-600)" class="size-6">
