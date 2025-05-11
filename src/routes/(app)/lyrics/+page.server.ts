@@ -3,7 +3,7 @@ import { supabase } from '$lib/supabase';
 export const prerender = false;
 
 export async function load({ url }) {
-  const page = url?.searchParams?.get('p') ? url.searchParams.get('p') : 1;
+  const page = url.searchParams.get('p') ? url.searchParams.get('p') : 1;
   // @ts-ignore
   const offset = (page - 1) * 27 || 0;
 
